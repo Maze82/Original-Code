@@ -1,0 +1,221 @@
+<script type="text/javascript" charset="utf-8">
+$(function()
+{
+
+$('#inputDate2').datePicker({startDate:'01/01/1996'});
+//$('#inputDate').datePicker({startDate:'01/01/1996'});
+$('#inputDate1').datePicker({startDate:'01/01/1996'});
+//$('.date-pick').datePicker()
+});
+</script>
+
+
+<script>
+/*function getquantity(id,order)
+ {
+ var order1=order;
+
+ var pin=document.getElementById('p_qty').value;
+
+ 	var dataString = 'pin='+pin;
+	var dataString1 = 'order1='+order1;
+	alert(order1);
+	$.ajax({
+		url: "ajax_show_quantity.php",
+		data: dataString,dataString1,
+		async: false,
+		cache: false,
+		beforeSend: function()
+		{
+		//$('#order_'+id).html("wait...");
+		},
+		success: function(data){
+		 $('#order').html(data);
+
+
+		  }
+	});
+ }*/
+
+function getquantity(pid,id)
+{
+	var total_prd_count =document.getElementById('total_prd_count').value;
+
+	var sum=0,x,y,product=1,prod_sum=0,z;
+	for(var i=1;i<total_prd_count;i++)
+	{
+		x = document.getElementById('p_qty_'+i).value;
+		y =document.getElementById('total_weight_count_'+i).value;
+
+		product=parseFloat(x) * parseFloat(y);
+	    prod_sum=parseFloat(prod_sum)+parseFloat(product);
+		sum = parseInt(sum)+parseInt(x);
+	}
+	document.getElementById('items_ordered').value=sum;
+	document.getElementById('total_weight').value=prod_sum;
+
+
+}
+</script>
+<script>
+
+ function getdispatchquantity(pid1,id1)
+{
+//alert(id1);
+	var total_count =document.getElementById('total_prd_count').value;
+		//alert(total_count);
+	var sum1=0,x1,y1,product1=1,prod_sum1=0,z;
+	for(var j=1;j<total_count;j++)
+	{
+	//alert(j);
+		x1 = document.getElementById('d_qty_'+j).value;
+		y1 =document.getElementById('total_weight_count_'+j).value;
+		//alert(y1);
+		product1=parseFloat(x1) * parseFloat(y1);
+
+	    prod_sum1=parseFloat(prod_sum1)+parseFloat(product1);
+	//	alert(prod_sum1);
+		sum1 = parseInt(sum1)+parseInt(x1);
+	//alert(y1);
+	}
+	document.getElementById('filled_ordered').value=sum1;
+	document.getElementById('filled_weight').value=prod_sum1;
+
+
+}
+ </script>
+<!-- Content Middle Start -->
+        <form name='edit' id='edit' method='post' enctype="multipart/form-data" >
+        <div class="content_middle">
+        	<div class="pageheader">
+
+                    <div class="pageicon"><span class="iconfa-user"></span></div>
+                    <div class="pagetitle">
+                        <h1>Edit Order</h1>
+                    </div>
+                </div>
+            <div class="container_account">
+
+                <h2>Order Information</h2>
+                <div class="clearBoth">
+                    <div class="accountLeft">
+                                                <table cellpadding="0" cellspacing="10" width="100%">
+                        	<tr>
+                                <td width="30%" align="right">Order Date:</td>
+                                <td>
+								<input  name="date_ordered" id="inputDate" type="text" class="input_txt required error"  value="__ordered_date__" title='Please enter order date'/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="30%" align="right">Date Filled:</td>
+                                <td> <input  name="date_filled" id="inputDate1" type="text" class="input_txt" value="__date_filled__" title='Please enter date filled' /></td>
+                            </tr>
+
+							<tr>
+                                <td width="30%" align="right">Delivery Date:</td>
+                                <td> <input  name="delivery_date" id="inputDate2" type="text" class="input_txt" value="__delivery_date__" title='Please enter delivery date' /></td>
+                            </tr>
+                           <tr>
+                                <td width="30%" align="right"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Cost Centre:</td>
+                                <td>__ward_id__<input type="hidden" name="ward_name" value="__ward_id__" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">Ordering Person:</td>
+                                <td><input name="ordering_person" id="ordering_person" type="text" value="__ordering_person__" class="input_txt required error" title='Please enter ordering person'/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Email Address:</td>
+                                <td><input name="email" id="email" type="text" class="input_txt email required error" value="__email__"  title='Please enter email address'/></td>
+                            </tr>
+                             <tr>
+                                <td width="30%" align="right"></td>
+                                <td></td>
+                            </tr>
+
+                           <tr>
+                                <td align="right">Ordered Items:</td>
+                                <td id="order" ><input name="items_ordered" type="text"  id="items_ordered" class="input_txt" value=" __item_ordered__" title='Please enter items ordred'/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Ordered Weight:</td>
+                                <td ><input name="total_weight" id="total_weight" type="text" class="input_txt" value="__total_weight__" title='Please enter total weight'/></td>
+                            </tr>
+							 <tr>
+                                <td align="right">Filled Items:</td>
+                                <td id="order" ><input name="filled_ordered" type="text"  id="filled_ordered" class="input_txt" value="__filled_ordered__ " title='Please enter items ordred'/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Filled Weight:</td>
+                                <td ><input name="filled_weight" id="filled_weight" type="text" class="input_txt" value="__filled_weight__" title='Please enter total weight'/></td>
+                            </tr>
+
+                            <!--Matts altered this-->
+                            <tr>
+                                <td align="right">Bags Delivered:</td>
+                                <td ><input name="bag_delivered" id="bag_delivered" type="text" class="input_txt" value="__bag_delivered__" title='Please enter total bags'/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Cages Delivered:</td>
+                                <td ><input name="cage_delivered" id="cage_delivered" type="text" class="input_txt" value="__cage_delivered__" title='Please enter total cages'/></td>
+                            </tr>
+                              <!-- to this line -->
+                             <tr>
+                                <td align="right">Comments:</td>
+                                <td><textarea name="comments" id="comments" class="input_txt" title='Please enter comments'>__comments__</textarea></td>
+                            </tr>
+
+							 <tr>
+                                <td align="right">Status:</td>
+                                <td><select name="status" id="status" class="select_bar" >
+										<option __status_unfill__ value="UNFILLED">UNFILLED</option>
+										<option __status_fill__ value="FILLED">FILLED</option>
+
+								</select>
+                                </td>
+                            </tr>
+
+							 <tr>
+                                <td align="right">Send Order Filled Confirmation:</td>
+                                <td ><input type="checkbox" name="tickbox" id="tickbox"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="accountRight">
+                        <table cellpadding="0" cellspacing="10" width="100%" style="padding-right:300px">
+                            <tr>
+                                <td align="right">Product Ordered:</td>
+                                <td></td>
+                            </tr>
+
+                        </table>
+						 <table cellpadding="0" cellspacing="10" width="100%" id="products" style="padding-right:300px">
+                          __products__
+						<!--  <input type="hidden" name="counter" id="counter" value="__counter__" />-->
+                        </table>
+                    </div>
+
+
+                <div class="clearBoth">
+                	<table cellpadding="0" cellspacing="10" width="100%">
+                        <tr>
+                        	<td>&nbsp;</td>
+                            <td><input type="submit"  value="Save" class="btn_small" name="save" />&nbsp;
+																<input type="button"  value="Cancel" class="btn_small" onclick="window.location.href='__SITE_URL__/view_orders.php'" />&nbsp; <a href="javascript: window.history.go(-1)">
+																<input type="button"  value="Back" class="btn_small"  /></a> &nbsp; </td>
+                        </tr>
+                    </table>
+                </div>
+        	</div>
+      	</div>
+      </form>
+        <!-- Content Middle End -->
+<script>
+$(document).ready(function(){
+$("#edit").validate();
+});
+</script>

@@ -1,0 +1,69 @@
+<!-- Content Middle Start -->
+        <form name='edit' id='edit' method='post' enctype="multipart/form-data" >
+        <div class="content_middle">
+        	<div class="pageheader">
+                   
+                    <div class="pageicon"><span class="iconfa-user"></span></div>
+                    <div class="pagetitle">
+                        <h1>Edit Product</h1>
+                    </div>
+                </div>
+            <div class="container_account">
+            	
+                <h2>Product Information</h2>
+				 <div class="error2">__PROMPT__</div>
+                <div class="clearBoth">
+                    <div class="accountLeft">
+                        <table cellpadding="0" cellspacing="10" width="100%">
+                        	
+                            <tr>
+                                <td width="30%" align="right">*Product Name:</td>
+                                <td><input  name="product_name" type="text" class="input_txt required error" value="__product_name__" title='Please enter Product Name'/></td>
+                            </tr>
+							   <tr>
+                                <td width="30%" align="right">*Product Weight:</td>
+                                <td><input  name="product_weight" type="text" class="input_txt required error" value="__product_weight__" title='Please enter Product Weight'/></td>
+                            </tr>
+                           <tr>
+                                <td width="30%" align="right">Item Description:</td>
+                                <td><textarea  name="description"  class="input_txt"  title='Please enter Item Description' />__description__</textarea></td>
+                            </tr>
+							<tr>
+                                <td width="30%" align="right">Item Code:</td>
+                                <td><input  name="code" type="text" class="input_txt" value="__code__" title='Please enter Item Code' /></td>
+                            </tr>
+								<tr>
+                                <td width="30%" align="right">Item Type:</td>
+                     
+                     <td>  <select name="type" id="type" class="input_txt" style="width:223px;" >
+						  <option>Select Type</option>
+					      <option value="COG"  __selectedCOG__>Customers Own Goods (COG)</option>
+                          <option value="Hire" __selectedHire__>Hire</option>
+                        </select></td>
+                      </tr>
+						 
+						 
+                        </table>
+                    </div>
+                    
+                
+                   
+                
+                <div class="clearBoth">
+                	<table cellpadding="0" cellspacing="10" width="100%">
+                        <tr>
+                        	<td>&nbsp;</td>
+                            <td><input type="submit"  value="Save" class="btn_small" name="save" onclick="return validation();"/> &nbsp; </td>
+                        </tr>
+                    </table>
+                </div>
+        	</div>
+      	</div>
+      </form>  
+        <!-- Content Middle End -->
+<script>
+$(document).ready(function(){
+$("#edit").validate();
+});
+</script>        
+        

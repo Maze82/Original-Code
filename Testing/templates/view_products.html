@@ -1,0 +1,89 @@
+ <form name='form1' method='post' action="">         
+<div class="pageheader">
+                    <div class="searchbar">
+                           <div class="btn_com"><a href="__SITE_URL__/create_product.php">Add Product</a></div>
+                        </div>
+                    <div class="pageicon"><span class="iconfa-user"></span></div>
+                    <div class="pagetitle">
+                        <h1>View Products</h1>
+                    </div>
+                </div>
+                <div class="error" align="center" style="margin-bottom:10px;"></div>
+              <div class="container_account">                 
+                  <div class="block_customer"> 
+               <div class="block_customer_search"> 
+                		<h3>Search Product</h3>
+               <table cellspacing="3" width="50%" class="table">
+				
+                        <tr>
+						
+						<td width="3%"><input  name="keyword" type="text" class="input_txt" value="Enter Title" size='50' /></td>
+                               <td width="1%">Customers:</td>
+                              <td width="3%"><select name="customer" id="customer" class="input_search">
+							  <option value="">select</option>
+							 __customers__
+							  </select>
+							  </td>  <td><input type="submit"  alt="" title="" class="btn_com" value="Search" /></td>
+                           </tr>   
+               					             
+                          
+                        </table>
+                         
+                       <!-- <div align="left">
+                        	<input  name="keyword" type="text" class="input_txt" value="Enter Title" size='50' />
+                         <a href="javascript:void(0);" onclick="getCostcenter();" ><input type="submit"  alt="" title="" class="btn_com" value="Search" /></a>
+                        </div>-->
+                        </div>
+               <div class="error2">__PROMPT__</div>
+            	 <div class="block_product">
+            	 
+                    <div class="block_product_content" id="search_result">
+                    	<table cellpadding="0" cellspacing="0" width="100%" class="table table-bordered responsive dataTable product_table">
+                        <thead>
+                        	<tr>
+                            	<th width="30">#</th>
+                                <th width="180">Product Name</th>
+                                <th width="150">Product Weight</th>
+								 <th width="150">Product Code</th>
+								  <th width="150">Action</th>
+								<!--<th width="30">#</th>
+                                <th width="150">Product Name</th>
+                                <th width="150">Product Weight</th>
+								<th width="150">Product Description</th>
+                                <th width="150">Product Code</th>                                                
+                                <th width="150"></th>-->
+                            </tr>
+                           </thead>  
+                            __PAGE_LIST__
+                        </table>
+						<div class="">
+                    <ul>
+                    __PAGE_NAVS__
+                    </ul>                     
+                    </div>
+                    </div>
+                </div> </div>
+            </div></form>
+            <!-- Left End -->
+<script>
+function remove_product(p_id)
+{ //alert(emp_id);
+  if(confirm('Sure to delete?'))
+  {  
+		var dataString ='p_id='+p_id;  
+		$.ajax(
+    {
+			url: "ajax_remove_product.php?"+dataString,
+			data: dataString,
+			async: false,
+			cache: false,
+			success: function(html)
+        {
+				  //$('#sn_'+id).slideUp('slow', function(){ $('#sn_'+id).remove(); });;
+                  $('#ep_'+p_id).remove().slideUp("slow");
+				//alert(html);
+			 }
+		});
+	}
+}
+</script> 

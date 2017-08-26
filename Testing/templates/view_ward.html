@@ -1,0 +1,108 @@
+<script>
+
+ 
+$(function()
+{
+$('#from').datePicker({startDate:'01/01/1996'});
+$('#to').datePicker({startDate:'01/01/1996'});
+
+//$('.date-pick').datePicker()
+});
+
+</script>
+<div class="pageheader">
+                    <div class="searchbar">
+                           <div class="btn_com"><a href="__SITE_URL__/create_ward.php">Add Ward</a></div>
+                        </div>
+                    <div class="pageicon"><span class="iconfa-user"></span></div>
+                    <div class="pagetitle">
+                        <h1>View Cost Center</h1>
+                    </div>
+                </div>
+				<form name='form1' method='get' action="">  
+                <div class="error" align="center" style="margin-bottom:10px;"></div>
+              <div class="container_account">                 
+                  <div class="block_customer"> 
+               <div class="block_customer_search"> 
+                		<h3>Search User Database</h3>
+						
+                 <table cellpadding="0" cellspacing="3" width="100%" class="table">
+				  <tr>
+                              <td width="100">Date:</td>
+                              <td width="200"><input  name="from" id="from" style="width:70px" class="input_search" />&nbsp;<input  style="width:70px" name="to" id="to" class="input_search" />
+							  </td>
+							  <td width="100"></td>
+                             <td width="200"></td> 
+                           </tr>
+				 <tr>
+                              <td width="100">Cost Centre:</td>
+                              <td width="200"><input  type="text" name="ward" id="ward" style="width:170px" class="input_search" />
+							  </td>
+							  <td width="100"></td>
+                             <td width="200"></td>
+                           </tr>
+                        <tr>
+                              <td width="100">Category:</td>
+                              <td width="200"><select name="category" id="category" class="input_search">
+							  <option value="">select</option>
+							 __ward_category__
+							  </select>
+							  </td>
+							  <td width="100"></td>
+                             <td width="200"></td>
+                           </tr>   
+               					             
+                          
+                        </table>
+                         
+                        <div align="right">
+                        	<!--<input type="button"  value="Search" class="btn_small" />-->
+                         <!--<p><a href="javascript:void(0);" onclick="getCostcenter();" ><input type="submit"  alt="" title="" class="btn_com" value="Filter Listings" /></a></p>-->
+						 <p><input type="submit" name="FilterListing" class="btn_com" value="Filter Listing"  /></p>
+						 
+                        </div>
+                        </div>
+               <div class="error2">__PROMPT__</div>
+            	 <div class="block_product">
+            	 
+                    <div class="block_product_content" id="search_result">
+                    	<table cellpadding="0" cellspacing="0" width="100%" class="table table-bordered responsive dataTable product_table">
+                        <thead>
+                        	<tr>
+                            	<th width="30">#</th>
+								 <th width="180">Cost Centre Category</th>
+                                <th width="180">Cost Centre</th>
+                                <th width="150">Ordering Person</th>
+								<th width="150">Email</th>                                               
+                                <th width="150"></th>
+                            </tr>
+                           </thead>  
+                            __PAGE_LIST__
+                        </table>
+                    </div>
+                </div> </div>
+            </div>
+			</form>
+            <!-- Left End -->
+<script>
+function remove_ward(w_id)
+{ //alert(emp_id);
+  if(confirm('Sure to delete?'))
+  {  
+		var dataString ='w_id='+w_id;  
+		$.ajax(
+    {
+			url: "ajax_remove_ward.php?"+dataString,
+			data: dataString,
+			async: false,
+			cache: false,
+			success: function(html)
+        {
+				  //$('#sn_'+id).slideUp('slow', function(){ $('#sn_'+id).remove(); });;
+                  $('#ep_'+w_id).remove().slideUp("slow");
+				//alert(html);
+			 }
+		});
+	}
+}
+</script> 

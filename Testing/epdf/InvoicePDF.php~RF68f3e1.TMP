@@ -1,0 +1,273 @@
+<?php session_start(); 
+include("../config/data.config.php");
+include("$LIB_DIR/class.database.php");
+include("$LIB_DIR/data.constant.php");
+include("$LIB_DIR/functions.library.php");
+include("$LIB_DIR/mpdf/mpdf.php");
+
+$db=new DbConnect($DB_HOST, $DB_USERNAME, $DB_PASSWORD, $DB_NAME, $DB_REPORT_ERROR, $DB_PERSISTENT_CONN);
+$db->open() or die($db->error());
+$db1=new DbConnect($DB_HOST, $DB_USERNAME, $DB_PASSWORD, $DB_NAME, $DB_REPORT_ERROR, $DB_PERSISTENT_CONN);
+$db1->open() or die($db1->error());
+ 
+ //error_reporting(E_ALL);
+//ini_set('display_errors','On');
+ 
+$id =$_REQUEST['id'];
+
+
+    
+    $select="SELECT I.createtime,I.job_number,I.project_title,E.first_name,E.last_name FROM employee As E
+               LEFT JOIN invoice As I ON E.emp_login_id=I.sales_rep 
+               WHERE I.id='$id'";  
+    
+     $db->query($select);
+    if($db->num_rows())
+    {
+        $row =$db->fetch_assoc();
+        
+         $quote_date = date('F d, Y',$row['createtime']);
+        $quote_no = sprintf("%06d",$row['job_number']);
+        $first_name = $row['first_name'];
+        $last_name = $row['last_name'];
+        $project_title = $row['project_title'];
+         
+    }
+    
+    $select1="SELECT C.business_name,C.contact_person,C.street_address,C.state,C.postcode,C.city FROM customer as C
+               LEFT JOIN invoice As I ON C.id=I.cust_id
+               WHERE I.id='$id'";
+    
+     $db->query($select1);
+    if($db->num_rows())
+    {
+        $row1 =$db->fetch_assoc();
+        
+        $business_name = $row1['business_name'];
+        $contact_person = $row1['contact_person'];
+        $street_address = $row1['street_address'];
+        $state = $row1['state'];
+        $postcode = $row1['postcode'];
+        $city= $row1['city'];
+        if($city!='')
+        $ADDr = $city;
+        if($state!='')
+        $ADDr .=", $state";
+        if($postcode!='')
+        $ADDr .=", $postcode";
+        
+
+         
+    }
+    
+       $select2="SELECT ID.product_name,ID.description,ID.price FROM invoice as I
+               LEFT JOIN invoice_detail As ID ON I.id=ID.invoice_id                
+               WHERE I.id='$id'"; 
+    
+     $db->query($select2);
+    if($db->num_rows())
+    {
+        while($row1 =$db->fetch_assoc())
+        {
+        $product_name = $row1['product_name'];
+        $basic_description = $row1['description'];
+        $price = $row1['price'];
+        $state = $row1['state'];
+        $total_price += $price;
+        $product_desc .= "<tr>
+            	<td style=\"background:#f7f8f8; padding:8px 14px 6px; font-family:Arial; font-size:12px; color:#000; border-width:0 1px; border-style:solid; border-color:#000;\" align=\"left\">
+                	<div style=\"font-weight:bold; color:#000; font-family:Arial; text-decoration:underline;\">$product_name</div>
+                   $basic_description
+                </td>
+                <td style=\"background:#f7f8f8; padding:8px 14px 6px; vertical-align:top; text-align:center; font-family:Arial; font-size:12px; color:#000; text-transform:uppercase; border-width:0 1px 0 0; border-style:solid; border-color:#000;\">$ $price</td>
+            </tr>";
+        }
+
+         
+    } 
+     
+ 
+			  	 $EVENTS .= "
+						<div style=\"width:1000px; margin:0 auto; padding:20px;\">
+	<div style=\"width:960px; margin:0 auto; clear:both;\">
+        <div style=\"width:400px; float:left;\">
+			<div style=\"float:left; margin-top:14px; width:165px;\"> 
+        		<img src=\"$SITE_URL/epdf/invoice_PDF_logo.jpg\" alt=\"\" />
+			</div>
+			<p style='float:left; padding:0 10px 0 0; line-height:16.5px; width:50px; font-family:arial; margin:0; font-size:9px; color:#609A12; text-align:right;'>
+				address<br /><br />
+				mobile<br />
+				phone<br />
+				fax<br />
+				email<br />
+				web<br />
+			</p>
+			<p style='float:left; padding:0; line-height:16.5px; font-family:arial; margin:0; font-size:9px;'>
+			293 Wellington Street<br />
+			Launceston TAS 7250<br />
+			0439 428 466<br />
+			(03) 6334 0108<br />
+			(03) 6343 5732<br />
+			accounts@rawmarketing.com.au<br />
+			www.rawmarketing.com.au
+			</p>
+        </div>
+        <div style=\"width:200px; float:right; font-family:Arial; font-size:10px;\">
+        	<p style=\"font-family:Arial; font-size:24px; color:#a6a6a6; text-align:center; font-weight:bold; margin:0 0 10px 50px;\">TAX<br />INVOICE</p>
+            <table cellpadding=\"0\" cellspacing=\"0\" width='100%' style=' line-height:17px;'>
+				<tr>
+					<td align='right' style=\"font-family:Arial; font-size:10px; font-weight:bold; color:#000;\">DATE:</td>
+					<td align='right' style=\"font-family:Arial; font-size:10px; color:#190019;\">$quote_date</td>
+				</tr>
+				<tr>
+					<td align='right' style=\"font-family:Arial; font-size:10px; font-weight:bold; color:#000;\">INVOICE #</td>
+					<td align='right' style=\"font-family:Arial; font-size:10px; color:#190019;\">$quote_no</td>
+				</tr>
+				<tr>
+					<td align='right' style=\"font-family:Arial; font-size:10px; font-weight:bold; color:#000;\">FOR:</td>
+					<td align='right' width='100' style=\"font-family:Arial; font-size:10px; color:#190019;\">$business_name</td>
+				</tr>
+			</table>
+        </div>
+  	</div>
+		
+    <div style=\"width:760px; padding-bottom:10px; margin:20px auto 0; clear:both;\">
+		  
+      <div style='clear:both; overflow:hidden;'>
+        <div style='float:left; width:320px;'>
+          <p style=\"font-family:Arial; font-size:11px; color:#000; padding-bottom:20px;\"><strong>Bill To:</strong><br />
+          $business_name<br />
+          $street_address<br />
+          $ADDr.</p>
+        </div>
+        <div style='float:left; width:320px;'>
+          <p style=\"font-family:Arial; font-size:11px; color:#000; padding-bottom:20px;\">
+            <strong>Preferred Payment Method</strong><br />
+            <em>Direct Deposit</em><br />
+            <strong>ACC #: 6017 5329</strong><br />
+            <strong>BSB #: 807 009</strong><br /> 
+            <strong>Name:</strong> Gavin Mace<br />
+            <em style='font-size:8'>Please quote invoice number</em>
+          </p>
+        </div>
+      </div>    	
+    </div>
+    
+    <div style=\"width:630px; clear:both; margin:0 auto;\">
+		<table cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">
+			<tr>
+				<td style=\"width:450px; background:#d2d3d3; padding:8px 14px 6px; font-family:Arial; font-size:12px; color:#323232; text-transform:uppercase; text-align:center; border:1px solid #000;\">DESCRIPTION</td>
+				<td style=\"width:122px; background:#d2d3d3; padding:8px 14px 6px; font-family:Arial; font-size:12px; color:#323232; text-transform:uppercase; text-align:center; border:1px solid #000;\">PRICE (inc. GST)</td>
+			</tr>
+        
+            $product_desc
+            <tr>
+            	<td style=\"background:#f7f8f8; padding:8px 14px 6px; font-family:Arial; font-size:12px; color:#000; border-width:0 1px 1px; border-style:solid; border-color:#000;\">
+                	* Domain Name & Web Hosting from period 1st July 2013 to 30th June 2014.<br />
+                    ** All Domain Name & Web Hosting services until this start date are complimentary.<br />
+                </td>
+                <td style=\"background:#f7f8f8; padding:8px 14px 6px; vertical-align:top; text-align:center; font-family:Arial; font-size:12px; color:#000; text-transform:uppercase; border-width:0 1px 1px 0; border-style:solid; border-color:#000;\"></td>
+            </tr>
+            <tr>
+            	<td style=\"padding:8px 14px 6px;font-weight:bold; font-family:Arial; font-size:12px; color:#000; border-right:1px solid #000; text-align:right;\">TOTAL (Inc. GST)</td>
+                <td style=\"background:#f7f8f8; padding:8px 14px 6px; vertical-align:top; text-align:center; font-family:Arial; font-size:12px; color:#000; text-transform:uppercase; border-width:0 1px 1px 0; border-style:solid; border-color:#000;background-color:#D8E4BC\">$ $total_price</td>
+            </tr>
+        </table>
+    </div>
+    <div style=\"padding:10px 0; overflow:hidden; font-family:Arial; border-bottom:2px solid #000; margin:20px 0;\">
+    	<p style=\"font-size:13px; color:#000; text-align:left;\"><strong>Invoices must be paid within 30 days of issue.</strong><br />
+			After 30 days a $40 dollar late fee will be charged, or 5% of the total cost, whichever is higher.
+All credit card payments incur a 2% payment processing fee.<br /><br />Make all cheques payable to RAW Marketing Group Pty Ltd<br /><br />If you have any questions concerning this invoice<br />Please contact Gavin during business hours, within 7 days of issue.<br /></p><br /><p style=\"font-size:14px; color:#000;text-align:center;\"><strong>Thankyou for Your Business</strong> </p>
+    </div>
+
+
+
+</div>	";
+          
+   
+  
+    $date = date("m/d/y");
+    $dirName12  = 'pdf1';
+    $filename = 'qoute.html';
+    $handle = fopen($filename, "rb");
+    while (!feof($handle)) {  
+      $contents .= fread($handle, 8192); 
+    }
+					 
+	
+	 $contents = str_replace("__EVENTS__", "$EVENTS", "$contents");
+	  $contents = str_replace("__SITE_URL__", "$SITE_URL", "$contents");						
+ 
+    
+   
+   if(file_exists ($dirName12))
+		  @chmod($dirName12, 0777);
+		else
+		  @mkdir($dirName12, 0777);
+		  
+     $newFile   =$dirName12."/event_pdf_".mktime().".html";
+		
+     $newHandle = fopen($newFile, 'w');
+     
+	
+    
+    if (fwrite($newHandle, $contents) === FALSE) {
+      $PROMPT =  "Cannot write to file ($filename)";
+      $PROMPT_CLASS="error";
+    }  
+    fclose($handle);        
+    $html_file  = "pdf1/event_pdf_".mktime().".html";
+    
+    
+    
+    if(file_exists($html_file)){  
+    //$pdf=new HTML2FPDF();
+    
+    //$pdf->AddPage();
+    
+    $fp = fopen($html_file,"r");
+    $strContent = '';
+    while (!feof($fp)) {
+      $strContent .= fread($fp, 8192);
+    }  
+    fclose($fp);
+      
+      /*$pdf->WriteHTML($strContent,true);
+      $pdf->SetFont("Arial","",8);
+      $new_file_name =  "pdf1/cal_pdf_".mktime().".pdf";
+      $pdf->Output($new_file_name,'F'); */
+      
+    $new_file_name =  "pdf1/Invoice - ".$quote_no." - ".$business_name." - $project_title".".pdf";
+      //echo $new_file_name; exit;
+      $mpdf=new mPDF('utf-8','A4'); 
+
+      $mpdf->useOnlyCoreFonts = true;
+      
+      $mpdf->SetDisplayMode('fullwidth');
+      
+      $mpdf->list_indent_first_level = 0;	// 1 or 0 - whether to indent the first level of a list                                                           
+      
+      // LOAD a stylesheet
+      $stylesheet = file_get_contents('mpdfstyletables.css');
+                      
+      $mpdf->useOnlyCoreFonts = true;
+     
+      //$mpdf->WriteHTML('<page sheet-size="8.5in 11in" />');
+      $mpdf->WriteHTML($strContent,0,true,true);
+   
+      $mpdf->Output($new_file_name,'F');
+     
+    }
+         
+       $dir      = "pdf1/";
+   //    $file     = $DOCUMENT_ROOT."/pdf/$new_file_name";exit;
+       $file     = "$DOCUMENT_ROOT$MAP_VROOT_PATH/epdf/$new_file_name";  
+       
+     
+       //@chmod("$file",777);
+      
+      //$url="$SITE_URL/download.php?f=$file";
+      //header("$url");
+      downloadFile($file);  
+   
+?>

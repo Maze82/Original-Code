@@ -1,0 +1,54 @@
+<div class="pageheader">
+                    <div class="searchbar">
+                           <div class="btn_com"><a href="__SITE_URL__/create_product.php">Add Product</a></div>
+                        </div>
+                    <div class="pageicon"><span class="iconfa-user"></span></div>
+                    <div class="pagetitle">
+                        <h1>View Products</h1>
+                    </div>
+                </div>
+                <div class="error" align="center" style="margin-bottom:10px;"></div>
+              <div class="container_account">                 
+                  <div class="block_customer"> 
+               
+               <div class="error2">__PROMPT__</div>
+            	 <div class="block_product">
+            	 
+                    <div class="block_product_content" id="search_result">
+                    	<table cellpadding="0" cellspacing="0" width="100%" class="table table-bordered responsive dataTable product_table">
+                        <thead>
+                        	<tr>
+                            	<th width="30">#</th>
+                                <th width="180">Product Name</th>
+                                <th width="150">Product Weight</th>                                               
+                                <th width="150"></th>
+                            </tr>
+                           </thead>  
+                            __PAGE_LIST__
+                        </table>
+                    </div>
+                </div> </div>
+            </div>
+            <!-- Left End -->
+<script>
+function remove_product(p_id)
+{ //alert(emp_id);
+  if(confirm('Sure to delete?'))
+  {  
+		var dataString ='p_id='+p_id;  
+		$.ajax(
+    {
+			url: "ajax_remove_product.php?"+dataString,
+			data: dataString,
+			async: false,
+			cache: false,
+			success: function(html)
+        {
+				  //$('#sn_'+id).slideUp('slow', function(){ $('#sn_'+id).remove(); });;
+                  $('#ep_'+p_id).remove().slideUp("slow");
+				//alert(html);
+			 }
+		});
+	}
+}
+</script> 

@@ -1,0 +1,129 @@
+<div class="pageheader">
+                   
+                    <div class="pageicon"><span class="iconfa-user"></span></div>
+                    <div class="pagetitle">
+                        <h1>Create User</h1>
+                    </div>
+                </div>
+        <form name="add" id="add" method="post" action="" enctype="multipart/form-data" >
+       
+        	
+            <div class="container_account">
+            
+                <h2>User Information</h2>
+                <div class="error2">__PROMPT__</div>
+                <div class="clearBoth">
+                    <div class="accountLeft">
+                        <table cellpadding="0" cellspacing="10" width="100%">
+                        	<tr>
+                                <td width="30%" align="right">User Status:</td>
+                                <td>
+                                    <select class="select_bar" name="status">  
+                                        <option value="I">Inactive</option>
+                                        <option value="A">Active</option></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="30%" align="right">*First Name:</td>
+                                <td><input  name="first_name" type="text" class="input_txt required error" title='Please enter First Name'/></td>
+                            </tr>
+                           
+                            <tr>
+                                <td align="right">Region:</td>
+                                <td><select class="select_bar required" name="region">
+                                        <option value="">select region</option>__REGION__
+                                        
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">Mobile Phone:</td>
+                                <td><input name="mobile_phone" type="text" class="input_txt" title='Please enter mobile Phone'/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">TFN Number:</td>
+                                <td><input name="tfn_no" type="text" class="input_txt " title='Please enter TFN Number'/></td>
+                            </tr>
+                           
+                         
+                        </table>
+                    </div>
+                    <div class="accountRight">
+                        <table cellpadding="0" cellspacing="10" width="100%">
+                            <tr>
+                                <td align="right">Picture:</td>
+                                <td><input type="file" class="input_txt" name="picture" title='Please select Picture'/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Last Name:</td>
+                                <td><input type="text" class="input_txt" name="last_name" title='Please enter Last Name' /></td>
+                            </tr>
+                            
+                            
+                            
+                            <tr>
+                                <td align="right">Phone:</td>
+                                <td><input type="text" class="input_txt" name="phone" title='Please enter Phone Number' /></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Fax:</td>
+                                <td><input type="text" class="input_txt" name="fax" /></td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                </div>
+                <h2>Address Information</h2>
+                <div class="clearBoth">
+                    <div class="accountLeft">
+                        <table cellpadding="0" cellspacing="10" width="100%">
+                            <tr>
+                                <td width="30%" align="right">Primary Address:</td>
+                                <td><input type="text" class="input_txt" name="address" title='Please enter Primary Address' /></td>
+                            </tr>
+                            <tr>
+                                <td align="right">State:</td>
+                                <td><input type="text" class="input_txt" name="state" title='Please enter State' /></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Country:</td>
+                                <td><input type="text" class="input_txt" name="country" title='Please enter Country' /></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Email Address:</td>
+                                <td><input type="text" class="input_txt required email" name="email" title='Please enter Email Address' /></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="accountRight">
+                        <table cellpadding="0" cellspacing="10" width="100%">
+                            <tr>
+                                <td width="30%" align="right">City:</td>
+                                <td><input type="text" class="input_txt" name="city" title='Please enter City'/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Postal Code:</td>
+                                <td><input type="text" class="input_txt" name="postal_code" /></td>
+                            </tr>
+                        </table>
+                    </div>
+             	</div>
+                
+                <div class="clearBoth">
+                	<table cellpadding="0" cellspacing="10" width="100%">
+                        <tr>
+                        	<td>&nbsp;</td>
+                            <td><input type="submit"  value="Save" class="btn_small" name="save" /> &nbsp; <input type="submit"  value="Save & New" class="btn_small" name="saven" /> &nbsp; <input type="button"  value="Cancel" class="btn_small" onclick="window.location.href='__SITE_URL__'" /></td>
+                        </tr>
+                    </table>
+                </div>
+        	</div>
+
+      </form>  
+        <!-- Content Middle End -->
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#add").validate();
+});
+</script>        
+        

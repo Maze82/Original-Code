@@ -1,0 +1,69 @@
+<div class="pageheader">
+                   
+                    <div class="pageicon"><span class="iconfa-user"></span></div>
+                    <div class="pagetitle">
+                        <h1>Create Cost Centre Category</h1>
+                    </div>
+                </div>
+        <form name="add" id="add" method="post" action="" enctype="multipart/form-data" >
+       
+        	
+            <div class="container_account">
+            
+                <h2>Category Information</h2>
+                <div class="error2">__PROMPT__</div>
+                <div class="clearBoth">
+                    <div class="accountLeft">
+                        <table cellpadding="0" cellspacing="10" width="100%">
+                        	 <tr>
+                                <td width="30%" align="right">*Pin No.:</td>
+                                <td><input  name="pin" type="text" class="input_txt required error" maxlength="10" title='Please enter Pin No.'/></td>
+                            </tr>
+                            <tr>
+                                <td width="30%" align="right">*Category Name:</td>
+                                <td><input  name="category_name" type="text" class="input_txt required error" title='Please enter Category Name'/></td>
+                            </tr>
+                         	<tr>
+                                <td width="30%" align="right">Customer Type:</td>
+                     
+                     <td>  <select name="type" id="type" class="input_txt" style="width:223px;" >
+						  <option>Select Type</option>
+					      <option value="COG"  __selectedCOG__>Customers Own Goods (COG)</option>
+                          <option value="Hire" __selectedHire__>Hire</option>
+                        </select></td>
+                      </tr>
+					  	<tr>
+                                <td width="40%" align="right">Order Confirmation Template:</td>
+                     
+                     <td>  <select name="template" id="template" class="input_txt" style="width:223px;" >
+						  <option>Select Type</option>
+					      <option value="BLL" __selectedBLL__ >Blue Line Laundry </option>
+                          <option value="LaundryKingTas" __selectedLKT__>LaundryKingTas</option>
+                        </select></td>
+                      </tr>
+					  <tr>
+                                <td width="50%" align="right">Order Confirmation Destination Email:</td>
+                                <td><input  name="email" type="email" class="input_txt required error" title='Please enter correct email address'/></td>
+                            </tr>
+                        </table>
+                    </div>
+                   
+             
+                <div class="clearBoth">
+                	<table cellpadding="0" cellspacing="10" width="100%">
+                        <tr>
+                        	<td>&nbsp;</td>
+                            <td><input type="submit"  value="Save" class="btn_small" name="save" />&nbsp; <input type="button"  value="Cancel" class="btn_small" onclick="window.location.href='__SITE_URL__'" /></td>
+                        </tr>
+                    </table>
+                </div>
+        	</div>
+
+      </form>  
+        <!-- Content Middle End -->
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#add").validate();
+});
+</script>        
+        

@@ -1,0 +1,143 @@
+<script>
+
+ 
+$(function()
+{
+$('#orderdate1').datePicker({startDate:'01/01/1996'});
+$('#orderdate2').datePicker({startDate:'01/01/1996'});
+$('#filleddate1').datePicker({startDate:'01/01/1996'});
+$('#filleddate2').datePicker({startDate:'01/01/1996'});
+//$('.date-pick').datePicker()
+});
+
+</script>  
+
+  <!-- Left Start -->            
+        	<div class="pageheader">
+                    <div class="searchbar">
+                           <div class="btn_com"><a href="__SITE_URL__/create_order.php">Add Order</a></div>
+                        </div>
+                    <div class="pageicon"><span class="iconfa-user"></span></div>
+                    <div class="pagetitle">
+                        <h1>View Orders</h1>
+                    </div>
+                </div>
+                <div class="error" align="center" style="margin-bottom:10px;"></div>
+              <div class="container_account">                 
+                  <div class="block_customer">                 
+                	<div class="block_customer_search"> 
+                		<h3>Search Order Database</h3>
+                 <table cellpadding="0" cellspacing="3" width="100%" class="table">
+				  <tr>
+                              <td width="100">Order Date:</td>
+                              <td width="200"><input  name="orderdate1" id="orderdate1" style="width:70px" class="input_search" />&nbsp;<input  style="width:70px" name="orderdate2" id="orderdate2" class="input_search" />
+							  </td>
+							  <td width="100">Filled Date:</td>
+                             <td width="200"><input  name="filleddate1" id="filleddate1" style="width:70px" class="input_search" />&nbsp;<input  style="width:70px" name="filleddate2" id="filleddate2" class="input_search" /> 
+                           </tr>
+				 <tr>
+                          <td width="100">Order Status:</td>
+                              <td width="200"><select name="status" id="status" class="input_search">
+							  <option value="">select</option>
+							  <option value="FILLED">FILLED</option>
+							  <option value="UNFILLED">UNFILLED</option>
+							  </select>
+							  </td>  	
+                              <td width="100">Cost Centres:</td>                            
+                              <td width="200"><select name="costcentre" id="costcentre" class="input_search">
+							  <option value="">select</option>
+							 __ward_LIST__
+							  </select>
+							  </td>  
+                           </tr>
+						    <tr>
+                          <td width="100">Product Range:</td>
+                              <td width="200"><select name="product" id="product" class="input_search">
+							  <option value="">select</option>
+							 __product_LIST__
+							  </select>
+							  </td>
+							  <td width="100">Customers:</td>
+                              <td width="200"><select name="customer" id="customer" class="input_search">
+							  <option value="">select</option>
+							 __customers__
+							  </select>
+							  </td>  	
+                            
+                           </tr>
+                          <tr>
+                                <td width="100">Customers Type:</td>
+                     
+                    <td width="200"><select name="type" id="type" class="input_search">
+						  <option value="">Select</option>
+					      <option value="COG"  __selectedCOG__>Customers Own Goods (COG)</option>
+                          <option value="Hire" __selectedHire__>Hire</option>
+                        </select></td>
+                      </tr>
+               					             
+                          
+                        </table>
+                        
+                        <div align="right">
+                        	<!--<input type="button"  value="Search" class="btn_small" />-->
+						
+                         <p><a href="javascript:void(0);" onclick="addFilterPreference(); getContents();" ><input type="button"  alt="" title="" class="btn_com" value="Save Filtering Preferences" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onclick="getContents();" ><input type="button"  alt="" title="" class="btn_com" value="Filter Listings" /></a></p>
+                        </div>
+                        </div>
+                        
+               
+               <div class="error2">__PROMPT__</div>
+            	 <div class="block_product" >
+            	 
+                
+                    
+                    <div class="nav_details">
+                    <ul>
+                    __Regnav__
+                    </ul>                     
+                    </div>
+                    <div class="block_product_content" id="search_result">
+					<!--<div align="right" style="font-size:14px;font-weight:600;color:#77ca60">PDF Report- <a href="__SITE_URL__/epdf/quotePDF.php?customer=''&order_date1=''&order_date2=''&filleddate1=''&filleddate2=''&status=''&product=''\"><img src="__SITE_URL__/images/icon_pdf.png" align='top' align='top'></a></div><br>-->
+                    	<table cellpadding="0" cellspacing="0" width="100%" class="table table-bordered responsive dataTable product_table">
+                        <thead>
+                        	<tr>
+                            	<th width="30">#</th>
+                                <th width="60">Order Date</th>
+                                <th width="120">Ward</th>                                                    
+                                <th width="60">Ordered Items</th>
+								<th width="60">Ordered Weight</th>
+								<th width="60">Filled Items</th>
+								<th width="60">Filled Weight</th>
+								<th width="60">Date Filled</th>
+								<th width="50">Status</th>                               
+                                <th width="70">Action</th>
+                            </tr>
+                           </thead>  
+                            __PAGE_LIST__
+                        </table>
+                    </div>
+                </div> </div>
+            </div>
+            <!-- Left End -->
+<script>
+function remove_order(id)
+{
+ if(confirm('Sure to delete?'))
+  {  
+		var dataString ='id='+id;  
+		$.ajax(
+    {
+			url: "ajax_remove_order.php?"+dataString,
+			data: dataString,
+			async: false,
+			cache: false,
+			success: function(html)
+        {
+				  //$('#sn_'+id).slideUp('slow', function(){ $('#sn_'+id).remove(); });;
+                  $('#ep_'+id).remove().slideUp("slow");
+				//alert(html);
+			 }
+		});
+	}
+}
+</script>

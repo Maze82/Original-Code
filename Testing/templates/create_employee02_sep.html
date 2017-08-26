@@ -1,0 +1,80 @@
+<script language="javascript" type="text/javascript">
+function removeSpaces(string) {
+ return string.split(' ').join('');
+}
+</script>
+
+<div class="pageheader">
+                   
+                    <div class="pageicon"><span class="iconfa-user"></span></div>
+                    <div class="pagetitle">
+                        <h1>Create Employee</h1>
+                    </div>
+                </div>
+        <form name="add" id="add" method="post" action="" enctype="multipart/form-data" >
+       
+        	
+            <div class="container_account">
+            
+                <h2>Employee Information</h2>
+                <div class="error2">__PROMPT__</div>
+                <div class="clearBoth">
+                    <div class="accountLeft">
+                        <table cellpadding="0" cellspacing="10" width="100%">
+                        	
+                            <tr>
+                                <td width="30%" align="right">*First Name:</td>
+                                <td><input  name="first_name" type="text" class="input_txt required error" title='Please enter First Name'/></td>
+                            </tr>
+                             <tr>
+                                <td align="right">Last Name:</td>
+                                <td><input type="text" class="input_txt" name="last_name" title='Please enter Last Name' /></td>
+                            </tr>
+                            
+                          <tr>
+                                <td align="right">*UserName:</td>
+                                <td><input type="text"  name="user_name" class="input_txt required error" title='Please enter User Name'  onchange="this.value=removeSpaces(this.value);"/></td>
+                            </tr>
+                           
+                          <tr>
+                                <td align="right">*Email Address:</td>
+                                <td><input type="email" class="input_txt required email" name="email" title='Please enter Email Address' /></td>
+                            </tr>
+							<tr>
+                                <td align="right">*Password:</td>
+                                <td><input type="password" class="input_txt required error" name="password" title='Please enter Password' /></td>
+                            </tr>
+							<tr>
+                                <td width="30%" align="right">Employee Status:</td>
+                                <td>
+                                    <select class="select_bar" name="status">
+                                        <option value="">-Select-</option>
+                                        <option __status_active__ value="A">Active</option>
+                                        <option __status_inactive__ value="I">Inactive</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                </div>
+               
+                
+                <div class="clearBoth">
+                	<table cellpadding="0" cellspacing="10" width="100%">
+                        <tr>
+                        	<td>&nbsp;</td>
+                            <td><input type="submit"  value="Save" class="btn_small" name="save" />  &nbsp; <input type="button"  value="Cancel" class="btn_small" onclick="window.location.href='__SITE_URL__'" /></td>
+                        </tr>
+                    </table>
+                </div>
+        	</div>
+
+      </form>  
+        <!-- Content Middle End -->
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#add").validate();
+});
+</script>        
+        

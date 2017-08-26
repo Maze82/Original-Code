@@ -1,0 +1,115 @@
+<script type="text/javascript" charset="utf-8">
+$(function()
+{
+$('#inputDate').datePicker({startDate:'01/01/1996'});
+$('#inputDate1').datePicker({startDate:'01/01/1996'});
+//$('.date-pick').datePicker()
+});
+</script>
+<div class="pageheader">
+                   
+                    <div class="pageicon"><span class="iconfa-user"></span></div>
+                    <div class="pagetitle">
+                        <h1>Create Order</h1>
+                    </div>
+                </div>
+        <form name="add" id="add" method="post" action="" enctype="multipart/form-data" >
+       
+        	
+            <div class="container_account">
+            
+                <h2>Order Information</h2>
+                <div class="error2">__PROMPT__</div>
+                <div class="clearBoth">
+                    <div class="accountLeft">
+                        <table cellpadding="0" cellspacing="10" width="100%">
+                        	<tr>
+                                <td width="30%" align="right">Order Date:</td>
+                                <td>
+                                    <input  name="date_ordered" id="inputDate" type="text" class="input_txt required error" title='Please enter order date'/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="30%" align="right">Date Filled:</td>
+                                <td> <input  name="date_filled" id="inputDate1" type="text" value="" class="input_txt" title='Please enter date filled'/></td>
+                            </tr>
+                           <tr>
+                                <td width="30%" align="right"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Cost Centre:</td>
+                                <td><select name="ward_name" id="ward_name" class="select_bar" onchange="get_ward_products(this.value);">
+										<option value="">Select</option>
+										__WARD_LIST__
+								</select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">Ordering Person:</td>
+                                <td><input name="ordering_person" id="ordering_person" type="text" class="input_txt required error" title='Please enter ordering person'/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Email Address:</td>
+                                <td><input name="email" id="email" type="text" class="input_txt email required error" title='Please enter email address'/></td>
+                            </tr>
+                             <tr>
+                                <td width="30%" align="right"></td>
+                                <td></td>
+                            </tr>
+
+                           <tr>
+                                <td align="right">Items Ordered:</td>
+                                <td><input name="items_ordered" type="text" class="input_txt number" title='Please enter items ordred'/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Total Weight:</td>
+                                <td><input name="total_weight" type="text" class="input_txt" title='Please enter total weight'/></td>
+                            </tr>
+							 <tr>
+                                <td align="right">Status:</td>
+                                <td><select name="status" id="status" class="select_bar" >
+										<option value="UNFILLED">UNFILLED</option>
+										<option value="FILLED">FILLED</option>
+										
+								</select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="accountRight">
+                        <table cellpadding="0" cellspacing="10" width="100%" style="padding-right:300px">
+                            <tr>
+                                <td align="right">Product Ordered:</td>
+                                <td></td>
+                            </tr>                          
+                            
+                        </table>
+						 <table cellpadding="0" cellspacing="10" width="100%" id="products">
+                          
+                        </table>
+                    </div>
+             
+              
+                 
+                
+                <div class="clearBoth">
+                	<table cellpadding="0" cellspacing="10" width="100%">
+                        <tr>
+                        	<td>&nbsp;</td>
+                            <td><input type="submit"  value="Save" class="btn_small" name="save" />&nbsp; <input type="button"  value="Cancel" class="btn_small" onclick="window.location.href='__SITE_URL__'" /></td>
+                        </tr>
+                    </table>
+                </div>
+        	</div>
+
+      </form>  
+        <!-- Content Middle End -->
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#add").validate();
+});
+
+
+</script>        
+        

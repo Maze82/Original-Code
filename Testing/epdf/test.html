@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title></title>
+  </head>
+  <body>
+        
+    <table bgcolor="#e8e8ea">
+          <tr>
+          <td align="left" width="20%">&nbsp;</td>
+          <td align="left" width="20%"><strong>Current Solution</strong></td>
+          <td align="left" width="20%"><strong>Solais Solution</strong></td>
+          <td align="right" width="20%">&nbsp;</td>
+          <td align="right" width="20%"><strong>Additional Info</strong></td>
+          </tr>
+          <tr>
+          <td align="left" width="20%">Lamp Type:</td>
+          <td align="left" width="20%">
+          <select id="current_sol" name="current_sol">
+          <option value="$current_sol">$current_sol</option>
+          </select>
+          </td>
+          <td align="left" width="20%">
+          <select id="product" name="product">
+          <option value="$product">$product</option>
+          </select>
+          </td>
+          <td align="right" width="20%">Number of Lamps:</td>
+          <td align="right" width="20%">$num_of_lamp</td>
+          </tr>
+          <tr>
+          <td align="left" width="20%">Wattage:</td>
+          <td align="left" width="20%">$c_wattage</td>
+          <td align="left" width="20%">$wattage</td>
+          <td align="right" width="20%">Electrical Cost/kWh:</td>
+          <td align="right" width="20%">$ele_cost</td>
+          </tr>
+          <tr>
+          <td align="left" width="20%">Lamp Life (hours):</td>
+          <td align="left" width="20%">$c_lamplife</td>
+          <td align="left" width="20%">$lamp_life</td>
+          <td align="right" width="20%">Average Daily Use (hours):</td>
+          <td align="right" width="20%">$use_hour</td>
+          </tr>
+          <tr>
+          <td align="left" width="20%">Labor Cost :</td>
+          <td align="left" width="20%">$c_laborcost</td>
+          <td align="left" width="20%">$labour_cost</td>
+          <td align="right" width="20%">Days of Use/Year :</td>
+          <td align="right" width="20%">$use_day</td>
+          </tr>
+          <tr>
+          <td align="left" width="20%">Lamp Cost :</td>
+          <td align="left" width="20%">$c_lampcost</td>
+          <td align="left" width="20%">$c_lampcost_solais</td>
+          <td align="right" width="20%">Analysis Period (years):</td>
+          <td align="right" width="20%">$a_period</td>
+          </tr>
+          <tr>
+          <td align="left" width="20%">Lamp Life (years):</td>
+          <td align="left" width="20%">$lamp_life1</td>
+          <td align="left" width="20%">$lamp_life_solais</td>
+          <td align="right" width="20%">&nbsp;</td>
+          <td align="right" width="20%">&nbsp;</td>
+          </tr>
+          <tr>
+          <td align="right" width="20%">&nbsp;</td>
+          <td align="right" width="20%">&nbsp;</td>
+          <td align="center" width="20%"><img src="images/bt-calculate.gif"></td>
+         <td align="right" width="20%">&nbsp;</td>
+          <td align="right" width="20%">&nbsp;</td> 
+          </tr>
+        </table>
+        <table bgcolor="#ef9000" width="100%">
+        <tr><td align="left" >
+        <h2><strong><font color="#ffffff">OUTPUT</strong> | Cost Savings Results:</font></h2></td></tr></table>
+        <div bgcolor="#ef9000"><table bgcolor="white">
+        <tr>
+        <td align="left">Total Savings:</td>
+        <td align="left">$total_saving</td>
+        <td align="left">Time Until Payback:</td>
+        <td align="right">$payback_year</td>
+        <td align="right" style="padding-left:3px;">Year(s) |</td>
+        <td align="right">$payback_month</td>
+        <td align="right" style="padding-left:3px;">Month(s) |</td>
+        <td align="right">$payback_days</td>
+        <td align="right" style="padding-left:3px;">Day(s)</td>
+        </tr>
+        </table></div>
+       <table bgcolor="#ef9000">
+        <tr>
+        <td align="left" width="35%">&nbsp;</td>
+        <td align="left" width="25%"><strong>Current Solution</strong></td>
+        <td align="left" width="25%"><strong>Solais Solution</strong></td>
+        <td align="left" width="15%"></td>
+        </tr>
+        <tr>
+        <td align="left" width="35%"><font color="#ffffff">Cost of Retrofit:</font></td>
+        <td align="left" width="25%">$save_lamp_cost_current</td>
+        <td align="left" width="25%">$save_lamp_cost_solais</td>
+        <td align="left" width="15%"></td>
+        </tr>
+        <tr>
+        <td align="left" width="35%"><font color="#ffffff">Electrical Cost (1):</font></td>
+        <td align="left" width="25%">$ele_cost_current</td>
+        <td align="left" width="25%">$ele_cost_solais</td>
+        <td align="left" width="15%"><font color="#ffffff"></font></td>
+        </tr>
+        <tr>
+        <td align="left" width="35%"><font color="#ffffff">Relamping (2):</font></td>
+        <td align="left" width="25%">$relamping_current</td>
+        <td align="left" width="25%">$relamping_solais</td>
+        <td align="left" width="15%"></td>
+        </tr>
+        <tr>
+        <td align="left" width="35%"><font color="#ffffff">Total Cost (3):</font></td>
+        <td align="left" width="25%">$total_cost3_current</td>
+        <td align="left" width="25%">$total_cost3</td>
+        <td align="left" width="15%"></td>
+        </tr>
+         <tr>
+        <td align="left" width="35%"><font color="#ffffff">Air Cond. Savings (4):</font></td>
+        <td align="left" width="25%">$air_cond_current</td>
+        <td align="left" width="25%">$air_cond_solais</td>
+        <td align="left" width="15%"></td>
+        </tr>
+         <tr>
+        <td align="left" width="35%"><font color="#ffffff">Total Savings (5):</font></td>
+        <td align="left" width="25%">$total_save_current</td>
+        <td align="left" width="25%">$total_save_solais</td>
+        <td align="left" width="15%"></td>
+        </tr>
+        <tr>
+        <td align="left" width="35%">&nbsp;</td>
+        <td align="left" width="25%"><font color="#ef9000">a</font></td>
+        <td align="left" width="25%">&nbsp;</td>
+        <td align="left" width="15%">&nbsp;</td>
+        </tr>
+        </table>
+         
+        <table bgcolor="#518e04">
+        <tr><td colspan="4" align="left" width="100%"><h2><font color="#ffffff"><strong>OUTPUT</strong> | Environmental Savings Results: </h2></font></td></tr>
+        
+        <tr>
+        <td align="left" width="10%" nowrap="nowrap">Energy Cost Savings</td>
+        <td align="left" width="10%">$energy_cost</td>
+        <td align="left" width="10%" nowrap>Equivalent Waste Recycled (tons)</td>
+        <td align="left" width="10%">$equi_waste</td>
+        </tr>
+        <tr>
+        <td align="left" width="10%" nowrap="nowrap">Energy Usage Savings (kWh)</td>
+        <td align="left" width="10%">energy_usage</td>
+        <td align="left" width="10%" nowrap="nowrap">Equivalent Planting of Forests (acres)</td>
+        <td align="left" width="10%">$equi_plant</td>
+        </tr>
+        <tr>
+        <td align="left" width="10%" nowrap="nowrap">CO2 Emissions Reduction (pounds)</td>
+        <td align="left" width="10%">$energy_reduction</td>
+        <td align="left" width="10%" nowrap="nowrap">Equivalent Cars Removed from Road</td>
+        <td align="left" width="10%">$equi_cars</td>
+        </tr>
+        <tr>
+        <td align="left" width="10%" nowrap="nowrap">Equivalent Gas Saved (gallons)</td>
+        <td align="left" width="10%">$equi_gas</td>
+        <td align="left" width="10%" nowrap="nowrap">Equivalent Houses Supplied with Electricity</td>
+        <td align="left" width="10%">$equi_house</td>
+        </tr>
+        <tr>
+        <td align="left" width="10%">&nbsp;</td>
+        <td align="left" width="10%"><font color="#518e04">a</font></td>
+        <td align="left" width="10%">&nbsp;</td>
+        <td align="left" width="10%">&nbsp;</td>
+        </tr>
+        </table>
+        
+  </body>
+</html>

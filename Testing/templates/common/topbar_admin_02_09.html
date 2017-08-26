@@ -1,0 +1,72 @@
+<div class="header">
+        	<div class="headerLeft logo">
+            	<a href="__SITE_URL__/"><img src="__SITE_URL__/images/logo.png" /></a>
+            </div>
+            <div class="headerinner">
+            	<ul class="headmenu">
+                	<li class="right">
+                    	<div class="userloggedinfo">
+                        	<img src="__SITE_URL__/images/img_profile.gif" width="80" height="80" />
+                            <div class="userinfo">
+                            	<h5>__MEMBER_NAME__ <small></small></h5>
+                                <ul>
+                                  <!--  <li><a href="__SITE_URL__/user_detail.php?id=__session_user__">My Account</a></li> -->
+                                    <li><a href="__SITE_URL__/logout.php">Sign Out</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+        <div class="clearBoth" style="height:130px;"></div> 
+       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css"> 
+              
+        <div class="leftpanel" id="sidebar" style="position:fixed;height:500px;overflow:auto">
+        	<div class="leftmenu">
+        		<ul class="nav nav-tabs nav-stacked">
+					<li class="nav-header">Navigation</li>
+					<li><a href="index.php"><span class="iconfa-laptop"></span>Home</a></li>
+					<li class="dropdown"><a href="javascript:void(0);">Users</a>
+						<ul>
+							<li><a href="__SITE_URL__/create_user.php">Add Users</a></li>
+							<li><a href="__SITE_URL__/view_users.php">Manage Users</a></li>
+						</ul>
+					</li>
+					<!--<li class="dropdown"><a href="javascript:void(0);">LGH Order Form</a>-->
+					<li class="dropdown"><a href="javascript:void(0);">Laundry Orders Manager</a>
+						<ul>
+							<li><a href="__SITE_URL__/create_order.php">Add Order</a></li>
+							<li><a href="__SITE_URL__/view_orders.php">Manage Orders</a></li>
+							<li><a href="__SITE_URL__/create_category.php">Add Customer</a></li>
+							<li><a href="__SITE_URL__/view_category.php">Manage Customer</a></li>
+							<li><a href="__SITE_URL__/create_ward.php">Add Cost Center</a></li>
+							<li><a href="__SITE_URL__/view_ward.php">Manage Cost Center</a></li>
+							<li><a href="__SITE_URL__/create_product.php">Add Product</a></li>
+							<li><a href="__SITE_URL__/view_products.php">Manage Products</a></li>						
+								
+						</ul>
+					</li>
+					<li class="dropdown" __displayEmp__><a href="javascript:void(0);">Employee Manager</a>
+						<ul>
+							<li><a href="__SITE_URL__/create_employee.php">Add Employee</a></li>
+							<li><a href="__SITE_URL__/view_employee.php">Manage Employee</a></li>
+						</ul>
+					</li>
+				</ul>
+            </div>
+        </div>        
+        
+   <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script type="text/javascript"> 
+           (function($){
+        			$(window).load(function(){
+        				$("#sidebar").mCustomScrollbar({
+        				
+        					theme:"dark-3"
+        				});
+				
+			});
+		})(jQuery);
+        </script> 

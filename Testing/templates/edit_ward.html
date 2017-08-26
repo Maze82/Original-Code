@@ -1,0 +1,92 @@
+
+<!-- Content Middle Start -->
+        <form name='edit' id='edit' method='post' enctype="multipart/form-data" >
+        <div class="content_middle">
+        	<div class="pageheader">
+                   
+                    <div class="pageicon"><span class="iconfa-user"></span></div>
+                    <div class="pagetitle">
+                        <h1>Edit Cost Center</h1>
+                    </div>
+                </div>
+            <div class="container_account">
+            	
+                <h2>Ward Cost Center</h2>
+				 <div class="error2">__PROMPT__</div>
+                <div class="clearBoth">
+                    <div class="accountLeft">
+                        <table cellpadding="0" cellspacing="10" width="100%">
+                        	<tr>
+                                <td width="30%" align="right">*Cost Centre Category:</td>
+                                <td><select  name="ward_category"  class="select_bar required" title='Please select category'>
+									<option value="">Select</option>
+									__CATE_LIST__
+								</select>
+								</td>
+                            </tr>
+                            <tr>
+                                <td width="30%" align="right">*Cost Centre:</td>
+                                <td><input  name="ward_name" type="text" class="input_txt required error" value="__ward_name__" title='Please enter Product Name'/></td>
+                            </tr>
+							   <tr>
+                                <td width="30%" align="right">*Ordering Person:</td>
+                                <td><input  name="ordering_person" type="text" class="input_txt required error" value="__ordering_person__" title='Please enter Product Weight'/></td>
+                            </tr>
+							 <tr>
+                                <td width="30%" align="right">*Email Address:</td>
+                                <td><input  name="email" type="text" class="input_txt required error" value="__email__" title='Please enter email'/></td>
+                            </tr>
+							 <tr>
+                                <td width="30%" align="right">*Products:</td>
+                                <td>__ward_products__</td>
+                            </tr>
+							<tr>
+							<td colspan="2">
+							<div id="add_rows_div">
+							<tr>
+                                <td width="30%" align="right"></td>
+                                <td><a href="__SITE_URL__/ward_add_product.php" id="various"><img src="/images/plus_green.png" /><input type="hidden" id="tblCount" name="tblCount" value="__i__"><input type="hidden" id="lastid" name="lastid" value="__i__"></a></td>
+                            </tr>
+							</div>
+							</td>
+							</tr>
+                        </table>
+                    </div>
+                    
+                
+                   
+                
+                <div class="clearBoth">
+                	<table cellpadding="0" cellspacing="10" width="100%">
+                        <tr>
+                        	<td>&nbsp;</td>
+                            <td><input type="submit"  value="Save" class="btn_small" name="save" onclick="return validation();"/> &nbsp; </td>
+                        </tr>
+                    </table>
+                </div>
+        	</div>
+      	</div>
+      </form>  
+        <!-- Content Middle End -->
+		<script type="text/javascript" src="__SITE_URL__/fancybox/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__SITE_URL__/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="__SITE_URL__/fancybox/jquery.fancybox-1.3.4.css" media="screen" />  
+<script>
+$(document).ready(function(){
+$("#edit").validate();
+});
+
+$(document).ready(function() {
+			$("#various").fancybox({
+				'width'				: 890,
+				'height'			: 400,
+				'autoScale'			: false,
+				'transitionIn'		: 'none',
+				'transitionOut'		: 'none',
+				'type'				: 'iframe'
+			});
+     
+		});
+
+</script>        
+        

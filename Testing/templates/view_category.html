@@ -1,0 +1,91 @@
+<script>
+
+ 
+$(function()
+{
+$('#from').datePicker({startDate:'01/01/1996'});
+$('#to').datePicker({startDate:'01/01/1996'});
+
+//$('.date-pick').datePicker()
+});
+
+</script>  
+<div class="pageheader">
+                    <div class="searchbar">
+                           <div class="btn_com"><a href="__SITE_URL__/create_category.php">Add Category</a></div>
+                        </div>
+                    <div class="pageicon"><span class="iconfa-user"></span></div>
+                    <div class="pagetitle">
+                        <h1>View Customers</h1>
+                    </div>
+                </div>
+                <div class="error" align="center" style="margin-bottom:10px;"></div>
+              <div class="container_account">                 
+                  <div class="block_customer"> 
+               		<div class="block_customer_search"> 
+                		<h3>Search User Database</h3>
+                 <table cellpadding="0" cellspacing="3" width="100%" class="table">
+				  <tr>
+                              <td width="100">Date:</td>
+                              <td width="200"><input  name="from" id="from" style="width:70px" class="input_search" />&nbsp;<input  style="width:70px" name="to" id="to" class="input_search" />
+							  </td>
+							  <td width="100"></td>
+                             <td width="200"></td> 
+                           </tr>
+				 <tr>
+                              <td width="100">Customer Name:</td>
+                              <td width="200"><input  type="text" name="customer" id="customer" style="width:70px" class="input_search" />
+							  </td>
+							  <td width="100"></td>
+                             <td width="200"></td>
+                           </tr>
+                          
+               					             
+                          
+                        </table>
+                         
+                        <div align="right">
+                        	<!--<input type="button"  value="Search" class="btn_small" />-->
+                         <p><a href="javascript:void(0);" onclick="getCustomers();" ><input type="button"  alt="" title="" class="btn_com" value="Filter Listings" /></a></p>
+                        </div>
+                        </div>
+               <div class="error2">__PROMPT__</div>
+            	 <div class="block_product">
+            	 
+                    <div class="block_product_content" id="search_result">
+                    	<table cellpadding="0" cellspacing="0" width="100%" class="table table-bordered responsive dataTable product_table">
+                        <thead>
+                        	<tr>
+                            	<th width="30">#</th>
+                                <th width="180">Category Name</th>                                
+                                <th width="150"></th>
+                            </tr>
+                           </thead>  
+                            __PAGE_LIST__
+                        </table>
+                    </div>
+                </div> </div>
+            </div>
+            <!-- Left End -->
+<script>
+function remove_category(c_id)
+{ //alert(emp_id);
+  if(confirm('Sure to delete?'))
+  {  
+		var dataString ='c_id='+c_id;  
+		$.ajax(
+    {
+			url: "ajax_remove_category.php?"+dataString,
+			data: dataString,
+			async: false,
+			cache: false,
+			success: function(html)
+        {
+				  //$('#sn_'+id).slideUp('slow', function(){ $('#sn_'+id).remove(); });;
+                  $('#ep_'+c_id).remove().slideUp("slow");
+				//alert(html);
+			 }
+		});
+	}
+}
+</script> 

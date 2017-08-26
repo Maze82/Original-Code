@@ -1,0 +1,71 @@
+<!-- Content Middle Start -->
+        <form name='edit' id='edit' method='post' enctype="multipart/form-data" >
+        <div class="content_middle">
+        	<div class="pageheader">
+                   
+                    <div class="pageicon"><span class="iconfa-user"></span></div>
+                    <div class="pagetitle">
+                        <h1>Edit Customer</h1>
+                    </div>
+                </div>
+            <div class="container_account">
+            	
+                <h2>Customer Information</h2>
+				 <div class="error2">__PROMPT__</div>
+                <div class="clearBoth">
+                    <div class="accountLeft">
+                       <table cellpadding="0" cellspacing="10" width="100%">
+                        	
+                             <tr>
+                                <td width="30%" align="right">*Pin No.:</td>
+                                <td><input  name="pin" type="text" class="input_txt required error" maxlength="10" value="__pin__" title='Please enter Pin No.'/></td>
+                            </tr>
+							<tr>
+                                <td width="30%" align="right">*Category Name:</td>
+                                <td><input  name="category_name" type="text" class="input_txt required error" value="__category_name__" title='Please enter Category Name'/></td>
+                            </tr>
+                         	<tr>
+                                <td width="30%" align="right">Customer Type:</td>
+                     
+                     <td>  <select name="type" id="type" class="input_txt" style="width:223px;" >
+						  <option>Select Type</option>
+					      <option value="COG" __selectedCOG__>Customers Own Goods (COG)</option>
+                          <option value="Hire" __selectedHire__>Hire</option>
+                        </select></td>
+                      </tr>
+					  <tr>
+                                <td width="40%" align="right">Order Confirmation Template:</td>
+                     
+                     <td>  <select name="template" id="template" class="input_txt" style="width:223px;" >
+						  <option>Select Type</option>
+					    <option value="LaundryKingTas" __selectedLKT__>LaundryKingTas</option>
+                        </select></td>
+                      </tr>
+					  <tr>
+                                <td width="50%" align="right">Order Confirmation Destination Email:</td>
+                                <td><input  name="email" type="email" class="input_txt required error" title='Please enter correct email address' value="__email__"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                
+                   
+                
+                <div class="clearBoth">
+                	<table cellpadding="0" cellspacing="10" width="100%">
+                        <tr>
+                        	<td>&nbsp;</td>
+                            <td><input type="submit"  value="Save" class="btn_small" name="save" onclick="return validation();"/> &nbsp; </td>
+                        </tr>
+                    </table>
+                </div>
+        	</div>
+      	</div>
+      </form>  
+        <!-- Content Middle End -->
+<script>
+$(document).ready(function(){
+$("#edit").validate();
+});
+</script>        
+        

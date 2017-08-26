@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+	font-family: 'Conv_MyriadPro-Regular';
+	src: url('../fonts/MyriadPro-Regular.eot');
+	src: local('☺'), url('../fonts/MyriadPro-Regular.woff') format('woff'), url('../fonts/MyriadPro-Regular.ttf') format('truetype'), url('../fonts/MyriadPro-Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+input{border:0;}
+
+
+body{background:transparent; margin:0px; font-family:'Conv_MyriadPro-Regular', Arial, Helvetica, sans-serif;}
+.right{float:right; padding-right:10px;}
+
+#main-container{width:904px; background:#fff; height:auto; overflow:hidden; margin:0px auto; border:#CCC 1px solid; box-shadow:1px 1px 8px #999999; border-radius:5px;}
+.clear{clear:both; height:auto; overflow:hidden;}
+
+.title{background:url(../images/add-appointment-header-bg.jpg) repeat-x; border-radius:5px 5px 0 0; height:41px;  color:#80c546; font-size:20px; text-align:center; font-weight:bold; line-height:40px;}
+
+.bottom-line{height:auto; border-bottom:1px solid #999; clear:both; padding-top:10px; background:#fefefe;} 
+.left-form{padding-left:30px; height:auto; float:left; padding-right:20px;background:#fefefe; position:relative;}
+.left-form .clear{clear:both; height:auto; overflow:hidden; padding-bottom:10px;}
+.left-form-select{background:url(../images/grey-input.jpg) no-repeat ; padding-top:8px; height:30px; font-size:16px; width:228px; padding-left:15px; float:left; border:0; margin-left:10px; font-family:'Conv_MyriadPro-Regular', Arial, Helvetica, sans-serif;}
+.left-form-select select{width:218px; background:none transparent; border:0; outline:none;}
+
+.left-form-input{background:url(../images/grey-input.jpg) no-repeat; height:36px; font-size:16px; width:228px; padding:10px 0 10px 15px; float:left; border:0; margin-left:10px; font-family:'Conv_MyriadPro-Regular', Arial, Helvetica, sans-serif; border:0 !important;}
+
+.left-form label{font-size:15px; height:30px; color:#333; float:left; padding-top:6px; width:100px;}
+
+
+.drop-down{background:#e3e3e3; width:245px; height:302px; border-radius:5px; box-shadow:inset 2px 2px 4px #999999; }
+
+.grey-input-bg{background:url(../images/date-bg.jpg) no-repeat; height:36px; font-size:16px; width:315px; padding-left:8px; float:left; margin-left:10px; font-family:'Conv_MyriadPro-Regular', Arial, Helvetica, sans-serif; padding-top:5px;}
+ .grey-input-bg input[type=text]{width:87px; height:26px; float:left; font-family:'Conv_MyriadPro-Regular', Arial, Helvetica, sans-serif; font-size:13px; border:0px; padding-left:5px; }
+  .grey-input-bg input.bbit-dropdown{width:87px; background:#fff; height:26px; float:left; margin-right:20px; font-family:'Conv_MyriadPro-Regular', Arial, Helvetica, sans-serif; font-size:13px; border:0px; padding:3px; padding-top:5px;}
+  .grey-input-bg input[type=image]{float:left; margin:0 20px;}
+    .left-form .txt{padding:7px 0px 0 25px; font-size:17px; float:left; color:#666; width:200px; }
+	    .left-form .txt a{color:#333; text-decoration:none;}
+			    .left-form .txt a:hover{color:#333; text-decoration:underline;}
+	
+.left-form textarea{width:800px; height:70px;  font-family:'Conv_MyriadPro-Regular', Arial, Helvetica, sans-serif; font-size:13px; border-radius:5px; padding-left:5px; background:#f4f4f4; border:1px solid #999; box-shadow:inset 2px 2px 3px #666666; padding:10px; font-size:16px; }
+
+.dropdownTitle{background:#e3e3e3; border-radius:0 0 5px 5px; width:236px; position:absolute; margin-left:114px; margin-top:-2px; padding:0 0 25px 7px; z-index:999; display:none;}
+.dropdownTitle ul{margin:0; padding:0; height:200px; overflow:auto;}
+.dropdownTitle ul li{list-style:none; font-size:15px; color:#3b3937; height:36px; text-align:left; background:none; padding:0 10px; margin-bottom:4px; line-height:36px;}
+.dropdownTitle ul li a{color:#3b3937; text-decoration:none; display:block;}
+.dropdownTitle ul li a:hover{color:#fff;}
+.dropdownTitle ul li:hover{background:url(../images/li_bg_title_mo.png) no-repeat;}
+.dropdownTitle ul li.title_dropDown{background:url(../images/li_bg_title.png) no-repeat; font-weight:bold;}

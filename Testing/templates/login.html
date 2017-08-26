@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="/js/html5shiv.js"></script>
+<script src="/js/respond.min.js"></script>
+<![endif]-->
+
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script src="/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/js/jquery-ui-1.10.3.min.js"></script>
+
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/modernizr.min.js"></script>
+<script src="/js/jquery.cookies.js"></script>
+
+<script src="/js/custom.js"></script>
+
+<script>
+ function validation(){  
+          //alert('hello!');
+       
+      if(document.getElementById('username').value==""){
+        
+         alert('Please enter username!');
+         document.getElementById('username').focus();    
+         return false;
+        }
+        
+        if(document.getElementById('password').value==""){
+        
+         alert('Please enter password!');
+         document.getElementById('password').focus();    
+         return false;
+        }
+         
+   return true;
+ }
+
+</script>
+<link rel="stylesheet" href="/css/style.default.css" type="text/css" />
+</head>
+
+<body class="loginpage">
+
+<div class="loginpanel">
+    <div class="loginpanelinner">
+         __PROMPT__
+        <div class="logo animate0 bounceIn"><img src="/images/logo.png" alt="" /></div>
+        <form id="loginform" name="loginform" action="" method="post">
+            
+            <div class="inputwrapper login-alert">
+                <div class="alert alert-error">Invalid username or password</div>
+            </div>
+            <div class="inputwrapper animate1 bounceIn">
+                <input type="text" name="username" id="username"  class="required" value="__remember_me__" placeholder="username" />
+            </div>
+            <div class="inputwrapper animate2 bounceIn">
+                <input type="password" name="password" id="password" class="required" value="__remember_pass__" placeholder="password" />
+            </div>
+            <div class="inputwrapper animate3 bounceIn">
+                <button name="submit">Sign In</button>
+            </div>
+            <!--<div class="inputwrapper animate4 bounceIn">
+                <div class="pull-right"><a href="__SITE_URL__/passwordReminder.php">Forget Password</a></div>
+                <label><input type="checkbox" __checked_remember__ class="remember" name="remember" /> Keep me sign in</label>
+            </div>-->
+            
+        </form>
+        
+    </div><!--loginpanelinner-->
+</div><!--loginpanel-->
+
+<div class="loginfooter">
+   <p>Copyright &copy; RawERP __CURR_YEAR_COPY__.  All Rights Reserved.</p>
+</div>
+
+        
+<script>
+  $(document).ready(function(){
+    $("#loginform").validate();
+  });
+</script>
+
+</body>
+
+  <!-- Content Middle Start -->
+        <!--<div class="content_middle">
+          
+        	<div class="leftDiv">
+            	<h1>Sign In</h1>
+                <div class="block_Login">
+                	<form name="loginform" id="loginform" method="post" action="">
+                        <table cellpadding="0" cellspacing="10" width="75%" align="center">            <tr><td colspan="2"><div class='__PROMPT__' id="prompt" style="color:red;">__PROMPT__</div></td></tr>
+                            <tr>
+                                <td width="100">Username:</td>
+                                <td><input type="text" name="username" class="input_login required" id="username" title="please enter username" /></td>
+                            </tr>
+                            <tr>
+                                <td>Password:</td>
+                                <td><input type="password" name="password" class="input_login required" id="password" title="please enter password" /></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td align="right"><a href="__SITE_URL__/passwordReminder.php">Forgot Password?</a></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><input name="signin" type="image" src="__SITE_URL__/images/btn_sign.png" /></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div> 
+           
+            
+                
+            <div class="rightDiv">
+            	<div class="heading_right">
+                	<p>Facebook</p>
+                </div>
+                <div class="right_content">
+                
+                </div>
+            </div>            
+          
+        </div> -->
+        <!-- Content Middle End -->
+
+
+</html>
